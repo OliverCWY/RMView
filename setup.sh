@@ -1,4 +1,3 @@
-set -ex
 apt update
 apt upgrade
 apt-get remove docker docker-engine docker.io containerd runc -y
