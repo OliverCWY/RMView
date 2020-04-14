@@ -1,5 +1,8 @@
 FROM debian:sid
 
-RUN ./setup.sh
+COPY run.sh /run.sh
+COPY setup.sh /setup.sh
 
-CMD ./run.sh
+RUN /setup.sh
+
+CMD /run.sh
