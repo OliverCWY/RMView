@@ -3,6 +3,7 @@ FROM debian:sid
 COPY run.sh /run.sh
 
 RUN set -ex && chmod +x /run.sh \
+ && arch \
  && apt update -y && apt upgrade -y \
  && apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common \
  && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
