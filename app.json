@@ -1,0 +1,9 @@
+{
+  "name": "RemoteView快速部署",
+  "description": "Deploy RemoteView to Heroku.",
+  "keywords": ["Virtual Browser"],
+  "env": {},
+  "website": "",
+  "repository": "",
+  "stack": "container"
+ }
