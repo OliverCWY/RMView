@@ -3,6 +3,6 @@ FROM debian:sid
 COPY run.sh /run.sh
 COPY setup.sh /setup.sh
 
-RUN /setup.sh
+RUN sh /setup.sh
 
-CMD /run.sh
+CMD sh /run.sh
