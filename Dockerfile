@@ -1,5 +1,5 @@
 FROM debian:sid
 
-RUN bash ./setup.sh
+RUN ./setup.sh
 
-CMD bash ./run.sh
+CMD ./run.sh
