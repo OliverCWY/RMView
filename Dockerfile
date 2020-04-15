@@ -6,11 +6,11 @@ RUN set -ex && chmod +x /run.sh \
  && apt update -y && apt upgrade -y \
  && apt install -y curl git wget curl apt-utils nodejs npm \
  && npm install node-dev is-docker sharp rimraf lighthouse-logger \
- && cd  && git clone https://github.com/dosyago/RemoteView \
- && cd RemoteView/public/voodoo \
- && cd RemoteView/public/voodoo \
+ && cd / && git clone https://github.com/dosyago/RemoteView \
+ && cd /RemoteView/public/voodoo \
+ && cd /RemoteView/public/voodoo \
  && npm install craydom style.dss jtype-system \
- && cd RemoteView/zombie-lord \
+ && cd /RemoteView/zombie-lord \
  && apt-get install -y pulseaudio pulseaudio-utils lame \
  && apt-get install -y gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget cgroup-tools nethogs iproute2 psmisc htop && apt --fix-broken -y install \
  && apt-get -yq install fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst ttf-ancient-fonts fontconfig psmisc fonts-freefont-ttf \
@@ -35,6 +35,6 @@ RUN set -ex && chmod +x /run.sh \
  && babel public/meta_bundle_i.js --presets=@babel/env > public/meta_bundle.js \
  && sed -i "s/8002/\${PORT}/g" test.sh \
 
-COPY /RemoteView /RemoteView/
+ADD /RemoteView/* /RemoteView/
 
 CMD /run.sh
