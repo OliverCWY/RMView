@@ -33,6 +33,8 @@ RUN set -ex && chmod +x /run.sh \
  && babel public/meta_bundle_i.js --presets=@babel/env > public/meta_bundle.js \
  && sed -i "s/8002/\${PORT}/g" test.sh 
 
-ADD RemoteView /
+WORKDIR RemoteView
+
+COPY . .
 
 CMD ["npm","test"]
