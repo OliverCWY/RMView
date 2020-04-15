@@ -13,13 +13,9 @@ RUN set -ex && chmod +x /run.sh \
  && apt-get -yq install fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst ttf-ancient-fonts fontconfig psmisc fonts-freefont-ttf \
  && apt-get -yq install xfonts-utils fonts-droid-fallback xfonts-intl-asian \
  && apt-get -yq install fonts-liberation fonts-unfonts-core fonts-sil-charis xfonts-tipa ttf-dejavu \
- && curl -o font.deb http://ftp.br.debian.org/debian/pool/main/f/fonts-noto-color-emoji/fonts-noto-color-emoji_0~20180810-1_all.deb \
- && dpkg -i font.deb && rm font.deb \
- && apt -yq install libfreetype6 fontconfig libcairo-gobject2 libcairo2 \
- && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
- && dpkg -i google-chrome-stable_current_amd64.deb \
+ && apt-get install chromium-browser \
  && apt --fix-broken -y install \
- && rm google-chrome-stable_current_amd64.deb || : \
+ && sed -i "s/google-chrome-stable/chromium-browser/g" start_chrome.sh \
  && cd .. \
  && npm i -g node-dev \
  && apt install -y libvips libjpeg-dev \
@@ -30,8 +26,9 @@ RUN set -ex && chmod +x /run.sh \
  && babel public/bundle_start_i.js --presets=@babel/env > public/bundle_image_start.js \
  && rollup public/meta.js -c rollup.config.js --format iife --file public/meta_bundle_i.js --name Meta \
  && babel public/meta_bundle_i.js --presets=@babel/env > public/meta_bundle.js \
- && cd /content/RemoteView/public/voodoo \
+ && cd /RemoteView/public/voodoo \
  && npm install craydom style.dss jtype-system \
- && sed -i "s/8002/${PORT}/g" test.sh
+ && cd /RemoteView/ \
+ && sed -i "s/8002/${PORT}/g" test.sh \
  
 CMD /run.sh
