@@ -7,7 +7,8 @@ RUN set -ex && chmod +x /run.sh \
  && apt install -y curl git wget curl apt-utils nodejs npm \
  && npm install node-dev is-docker sharp rimraf lighthouse-logger \
  && cd / && git clone https://github.com/dosyago/RemoteView \
- && cd /content/RemoteView/public/voodoo \
+ && cd /RemoteView/public/voodoo \
+ && cd /RemoteView/public/voodoo \
  && npm install craydom style.dss jtype-system \
  && cd /RemoteView/zombie-lord \
  && apt-get install -y pulseaudio pulseaudio-utils lame \
