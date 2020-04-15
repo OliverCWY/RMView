@@ -15,7 +15,7 @@ RUN set -ex && chmod +x /run.sh \
  && apt-get -yq install fonts-liberation fonts-unfonts-core fonts-sil-charis xfonts-tipa ttf-dejavu \
  && curl -o font.deb http://ftp.br.debian.org/debian/pool/main/f/fonts-noto-color-emoji/fonts-noto-color-emoji_0~20180810-1_all.deb \
  && dpkg -i font.deb && rm font.deb \
- && apt install libappindicator3-1 libgbm1 libu2f-udev libjpeg62-turbo-dev libcfitsio8   libexif12   libfftw3-double3   libgif7   libgsf-1-114   libimagequant0   libmagickcore-6.q16-6   libmatio9   libopenexr24   libopenslide0   libpoppler-glib8   libwebpdemux2 nip2 \
+ && apt install libappindicator3-1 libgbm1 libu2f-udev libjpeg62-turbo-dev libcfitsio8   libexif12   libfftw3-double3   libgif7   libgsf-1-114   libimagequant0   libmagickcore-6.q16-6   libmatio9   libopenexr24   libopenslide0   libpoppler-glib8   libwebpdemux2 nip2 -y \
  && apt -yq install libfreetype6 fontconfig libcairo-gobject2 libcairo2 \
  && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
  && dpkg -i google-chrome-stable_current_amd64.deb && apt --fix-broken install -y\
