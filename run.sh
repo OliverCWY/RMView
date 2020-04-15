@@ -1,2 +1,2 @@
-cd /RemoteView
+cd ~/RemoteView
 npm test

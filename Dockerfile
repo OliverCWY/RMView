@@ -2,6 +2,8 @@ FROM debian:sid
 
 COPY run.sh /run.sh
 
+BUILD_DIR=$1
+
 RUN set -ex && chmod +x /run.sh \
  && apt update -y && apt upgrade -y \
  && apt install -y curl git wget curl apt-utils nodejs npm \
@@ -33,8 +35,9 @@ RUN set -ex && chmod +x /run.sh \
  && babel public/bundle_start_i.js --presets=@babel/env > public/bundle_image_start.js \
  && rollup public/meta.js -c rollup.config.js --format iife --file public/meta_bundle_i.js --name Meta \
  && babel public/meta_bundle_i.js --presets=@babel/env > public/meta_bundle.js \
- && sed -i "s/8002/\${PORT}/g" test.sh
+ && sed -i "s/8002/\${PORT}/g" test.sh \
+ && mkdir -p ~/RemoteView
 
-COPY /RemoteView /
+COPY /RemoteView ~/RemoteView
 
 CMD /run.sh
