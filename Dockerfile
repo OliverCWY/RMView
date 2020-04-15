@@ -2,8 +2,6 @@ FROM debian:sid
 
 COPY run.sh /run.sh
 
-BUILD_DIR=$1
-
 RUN set -ex && chmod +x /run.sh \
  && apt update -y && apt upgrade -y \
  && apt install -y curl git wget curl apt-utils nodejs npm \
