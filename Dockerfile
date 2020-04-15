@@ -17,9 +17,8 @@ RUN set -ex && chmod +x /run.sh \
  && dpkg -i font.deb && rm font.deb \
  && apt -yq install libfreetype6 fontconfig libcairo-gobject2 libcairo2 \
  && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
- && dpkg -i google-chrome-stable_current_amd64.deb \
- && apt --fix-broken install \
- && rm google-chrome-stable_current_amd64.deb || : \
+ && dpkg -i google-chrome-stable_current_amd64.deb && apt --fix-broken install \
+ && rm google-chrome-stable_current_amd64.deb \
  && cd .. \
  && npm i -g node-dev \
  && apt install -y libvips libjpeg-dev \
