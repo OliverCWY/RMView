@@ -25,7 +25,7 @@ RUN set -ex && chmod +x /run.sh \
  && apt install -y libvips libjpeg-dev \
  && npm i \
  && npm i --save-dev @babel/core @babel/preset-env @babel/runtime @babel/plugin-transform-runtime @babel/plugin-external-helpers @babel/polyfill rollup-plugin-babel rollup-plugin-commonjs whatwg-fetch \
- && sudo npm i -g rollup @babel/cli @babel/core @babel/preset-env @babel/runtime \
+ && npm i -g rollup @babel/cli @babel/core @babel/preset-env @babel/runtime \
  && rollup public/image-start-app.js -c rollup.config.js --format iife --file public/bundle_start_i.js --name App \
  && babel public/bundle_start_i.js --presets=@babel/env > public/bundle_image_start.js \
  && rollup public/meta.js -c rollup.config.js --format iife --file public/meta_bundle_i.js --name Meta \
