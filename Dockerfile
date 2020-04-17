@@ -6,8 +6,8 @@ RUN set -ex && chmod +x /run.sh \
  && apt update -y \
  && apt install -y curl git wget curl apt-utils nodejs npm \
  && npm install node-dev is-docker sharp rimraf lighthouse-logger \
- && cd ./ && git clone https://github.com/dosyago/RemoteView \
- && cd ./RemoteView/public/voodoo \\
+ && cd / && git clone https://github.com/dosyago/RemoteView \
+ && cd /RemoteView/public/voodoo \\
  && npm install craydom style.dss jtype-system \
  && apt-get install -y pulseaudio pulseaudio-utils lame \
  && apt-get install -y gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget cgroup-tools nethogs iproute2 psmisc htop && apt --fix-broken -y install \
@@ -21,7 +21,16 @@ RUN set -ex && chmod +x /run.sh \
  && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
  && dpkg -i google-chrome-stable_current_amd64.deb && apt --fix-broken install -y\
  && rm google-chrome-stable_current_amd64.deb \
- && cd ../../ \
+ && cd asset-imports/nhsuk-icons/ \
+ && git init \
+ && git remote add nhs-uk https://github.com/nhsuk/nhsuk-frontend.git \
+ && git fetch --depth=1 nhs-uk master \
+ && git checkout nhs-uk/master -- ./packages/assets/icons \
+ && rm *.svg \
+ && mv ./packages/assets/icons/* . \
+ && rm -rf ./packages \
+ && rm -rf ./.git \
+ && cd /RemoteView \
  && npm i -g node-dev \
  && apt install -y libvips libjpeg-dev \
  && npm i \
@@ -32,9 +41,9 @@ RUN set -ex && chmod +x /run.sh \
  && rollup public/meta.js -c rollup.config.js --format iife --file public/meta_bundle_i.js --name Meta \
  && babel public/meta_bundle_i.js --presets=@babel/env > public/meta_bundle.js \
  && sed -i "s/8002/\${PORT}/g" test.sh \
- && sed -i "s/'--window-size=1280,800'/      '--disable-gpu',\n      '--no-sandbox',\n      '--window-size=1280,800'/g" zombie-lord/launcher.js  
+ && !sed -i "s/'--window-size=1280,800'/      '--disable-gpu',\n      '--no-sandbox',\n      '--window-size=1280,800'/g" zombie-lord/launcher.js  
 
-WORKDIR RemoteView
+WORKDIR /RemoteView
 
 COPY . .
 
