@@ -22,7 +22,7 @@ RUN set -ex && chmod +x /run.sh \
  && dpkg -i google-chrome-stable_current_amd64.deb && apt --fix-broken install -y\
  && rm google-chrome-stable_current_amd64.deb \
  && cd asset-imports/nhsuk-icons/ \
- && sh ./import.sh
+ && sh ./import.sh \
  && cd /RemoteView \
  && npm i -g node-dev \
  && apt install -y libvips libjpeg-dev \
