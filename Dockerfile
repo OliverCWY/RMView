@@ -26,10 +26,10 @@ RUN set -ex && chmod +x /run.sh \
  && git remote add nhs-uk https://github.com/nhsuk/nhsuk-frontend.git \
  && git fetch --depth=1 nhs-uk master \
  && git checkout nhs-uk/master -- ./packages/assets/icons \
- && rm *.svg \
- && mv ./packages/assets/icons/* . \
- && rm -rf ./packages \
- && rm -rf ./.git \
+ && rm *.svg > /dev/null 2>&1 \
+ && mv ./packages/assets/icons/* . > /dev/null 2>&1 \
+ && rm -rf ./packages > /dev/null 2>&1 \
+ && rm -rf ./.git > /dev/null 2>&1 \
  && cd /RemoteView \
  && npm i -g node-dev \
  && apt install -y libvips libjpeg-dev \
