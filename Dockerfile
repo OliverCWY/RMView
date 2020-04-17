@@ -34,7 +34,7 @@ RUN set -ex && chmod +x /run.sh \
  && rollup public/meta.js -c rollup.config.js --format iife --file public/meta_bundle_i.js --name Meta \
  && babel public/meta_bundle_i.js --presets=@babel/env > public/meta_bundle.js \
  && sed -i "s/8002/\${PORT}/g" test.sh \
- && !sed -i "s/'--window-size=1280,800'/      '--disable-gpu',\n      '--no-sandbox',\n      '--window-size=1280,800'/g" zombie-lord/launcher.js  
+ && sed -i "s/'--window-size=1280,800'/      '--disable-gpu',\n      '--no-sandbox',\n      '--window-size=1280,800'/g" zombie-lord/launcher.js  
 
 WORKDIR /RemoteView
 
